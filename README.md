@@ -8,3 +8,9 @@ An arts and culture magazine likes to feature interstitial advertisements every 
 
 - django >= 1.5
 - jquery
+
+### Settings
+
+INTERSTITIAL_ON (default True)
+INTERSTITIAL_CACHE (default False)
+INTERSTITIAL_FORCE (default False)
