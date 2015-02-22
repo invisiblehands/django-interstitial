@@ -11,6 +11,6 @@ An arts and culture magazine likes to feature interstitial advertisements every 
 
 ### Settings
 
-INTERSTITIAL_ON (default True)
-INTERSTITIAL_CACHE (default False)
-INTERSTITIAL_FORCE (default False)
+- INTERSTITIAL_ON (default True)
+- INTERSTITIAL_CACHE (default False)
+- INTERSTITIAL_FORCE (default False)
