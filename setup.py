@@ -23,7 +23,7 @@ class TestCommand(Command):
                     'ENGINE': 'django.db.backends.sqlite3'
                 }
             },
-            INSTALLED_APPS = ('django-interstitial',)
+            INSTALLED_APPS = ('interstitial',)
         )
 
         from django.core.management import call_command
@@ -32,17 +32,18 @@ class TestCommand(Command):
         if django.VERSION[:2] >= (1, 7):
             django.setup()
 
-        call_command('test', 'django-interstitial')
+        call_command('test', 'interstitial')
 
 
-setup(name='django-interstitial',
+setup(
+    name='interstitial',
     version='0.0.1',
-    packages=['django-interstitial'],
+    packages=['interstitial'],
     license='MIT',
     author='Cody Redmond',
     author_email='cody@invisiblehands.ca',
     url='https://github.com/invisiblehands/django-interstitial/',
-    description='A django app for adding interstitials. :)',
+    description='A pluggable django application for configuring and displaying interstitials. :)',
     long_description=open('README.md').read(),
     install_requires=[
         'Django>=1.5.0',
