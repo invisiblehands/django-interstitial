@@ -4,59 +4,31 @@ from setuptools import setup
 from setuptools import Command
 
 
-class TestCommand(Command):
-    user_options = []
-
-    def initialize_options(self):
-        pass
-
-    def finalize_options(self):
-        pass
-
-    def run(self):
-        from django.conf import settings
-
-        settings.configure(
-            DATABASES = {
-                'default': {
-                    'NAME': ':memory:',
-                    'ENGINE': 'django.db.backends.sqlite3'
-                }
-            },
-            INSTALLED_APPS = ('interstitial',)
-        )
-
-        from django.core.management import call_command
-        import django
-
-        if django.VERSION[:2] >= (1, 7):
-            django.setup()
-
-        call_command('test', 'interstitial')
+README = open(os.path.join(os.path.dirname(__file__), 'README.md')).read()
+os.chdir(os.path.normpath(os.path.join(os.path.abspath(__file__), os.pardir)))
 
 
 setup(
     name='interstitial',
     version='0.0.1',
-    packages=['interstitial'],
-    license='MIT',
-    author='Cody Redmond',
-    author_email='cody@invisiblehands.ca',
+    packages=find_packages(),
+    include_package_data=True,
+    license='BSD License',
+    description='A pluggable django application for configuring and displaying interstitials.',
+    long_description=README,
     url='https://github.com/invisiblehands/django-interstitial/',
-    description='A pluggable django application for configuring and displaying interstitials. :)',
-    long_description=open('README.md').read(),
+    author_email='cody@invisiblehands.ca',
+    author='Cody Redmond',
     install_requires=[
-        'Django>=1.5.0',
-    ],
-    tests_require=[
-        'Django>=1.5.0',
-    ],
-    cmdclass={'test': TestCommand},
+        'Django>=1.6.0',
+    ]
     classifiers=[
         'Environment :: Web Environment',
         'Intended Audience :: Developers',
+        'Framework :: Django',
+        'License :: OSI Approved :: BSD License'
         'Operating System :: OS Independent',
         'Programming Language :: Python :: 2.7',
-        'Framework :: Django',
+        'Topic :: Internet :: WWW/HTTP :: Dynamic Content'
     ],
 )
